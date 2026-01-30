@@ -15,17 +15,18 @@ This method allows you to submit your homework directly through the GitHub websi
 * Click the **'Fork'** button in the top-right corner. This will create a personal copy of the repository in your GitHub account.
 
 **Step 2:Locate Your Assigned Folder**
-* Inside the repository, a folder named with your student ID (e.g., PY102001001/) has already been created for you by the instructor.
+* Inside the repository, a folder named with your student ID (e.g., submissions/PY102001001/) has already been created for you by the instructor.
 * Do not create a new folder or rename the existing one. You must place all your lab submissions inside your assigned folder only.
 
 **Step 3: Upload Your Homework Files**
-* Open your ID-named folder (for example PY102001001/).
+* Open your ID-named folder (submissions/PY102001001/).
 * Click **'Add file'** and then **'Upload files'**.
 * Drag and drop all your completed homework files directly into the browser window.
 * Each lab must be a single Python file named exactly as shown below:
 - Lab 1 → lab01.py
 - Lab 2 → lab02.py
 - Lab 3 → lab03.py
+* Do not create any subfolders inside your ID folder.
 
 **Step 4: Commit and Submit**
 * At the bottom of the page, add a clear and descriptive commit message, such as: `Submit Lab 1 - [Your ID]`.
@@ -50,18 +51,19 @@ This is the standard, professional method for using Git. It requires you to have
     cd [name of the repo]
     ```
 **Step 2:Locate Your Assigned Folder**
-* Inside the repository, a folder named with your student ID (e.g., PY102001001/) has already been created for you by the instructor.
+* Inside the repository, a folder named with your student ID (e.g., submissions/PY102001001/) has already been created for you by the instructor.
 * Do not create a new folder or rename the existing one. You must place all your lab submissions inside your assigned folder only.
+* Do not create any subfolders inside your ID folder.
 
 **Step 3: Add, Commit, and Push Your Homework**
 * Save or copy your lab file into your ID folder using this exact naming convention:
 ```
-PY102001001/lab01.py
-PY102001001/lab02.py
+submissions/PY102001001/lab01.py
+submissions/PY102001001/lab02.py
 ```
 * Stage the new files to be tracked by Git:
     ```
-    git add PY103_Batch01_01/lab01.py
+    git add submissions/PY102001001/lab01.py
     ```
 * Commit your changes with a clear message:
     ```
@@ -74,5 +76,8 @@ PY102001001/lab02.py
 
 **Step 4: Create a Pull Request**
 * Go to your forked repository on GitHub.
-* A banner will appear at the top, prompting you to create a pull request from your new branch. Click **'Compare & pull request'**.
-* Write a clear title and description for your submission and click **'Create pull request'**.
+* Make sure your changes are only inside your assigned folder under submissions/
+(for example: submissions/PY102001001/lab01.py).
+* A banner will appear at the topat the top of the repository prompting you to create a pull request. 
+Click **'Compare & pull request'**.
+* Write a clear title and description (include your student ID and lab number) for your submission and click **'Create pull request'**.
