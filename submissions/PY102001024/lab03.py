@@ -29,13 +29,19 @@ def char_frequency(s: str) -> dict[str, int]:
       s = "banana"
       output = {'b': 1, 'a': 3, 'n': 2}
     """
-   
-    freq = {}
+    # TODO
+    output = {}
+
     for char in s:
-        # If char is in dict, increment; otherwise, initialize to 1
-        freq[char] = freq.get(char, 0) + 1
-    return freq
-    
+        if char in output:
+            output[char] += 1
+        else:
+            output[char] = 1
+
+    return output
+
+result = char_frequency("banana")
+
 
 # -------------------------
 # Q2 — Chaining (Collision Handling)
@@ -58,15 +64,22 @@ def insert_chaining(table: list[list[int]], key: int, size: int) -> list[list[in
       index = 5 % 3 = 2
       output = [[], [], [5]]
     """
-    
+    # TODO
     index = key % size
-    # Append the key to the list (bucket) at the calculated index
     table[index].append(key)
+
     return table
-    
+
+table = [[], [], [], []]
+key = 5
+size = 4
+result = insert_chaining(table,key,size)  
+
+
 # -------------------------
 # Q3 — Linear Probing
 # -------------------------
+
 
 def insert_linear_probing(table: list[int | None], key: int) -> list[int | None]:
     """
@@ -87,20 +100,32 @@ def insert_linear_probing(table: list[int | None], key: int) -> list[int | None]
 
       output = [8, 4, None, None]
     """
-
-    def insert_linear_probing(table: list[int | None], key: int) -> list[int | None]:
+    # TODO
     size = len(table)
-    start_index = key % size
-    
-    for i in range(size):
-        # Linear move: (start + i) % size
-        index = (start_index + i) % size
-        if table[index] is None:
-            table[index] = key
-            return table
-    return table # Table is full
-    
+    index = key % size
+    next_index = index+1
 
+    if table[index] == None:
+        table[index] = key
+
+    else:
+        while not table[next_index] == None:
+            if(next_index == len(table)-1):
+                next_index = 0
+            else:
+                next_index += 1    
+
+        table[next_index] = key    
+    return table    
+
+
+table = [None, 4, None, None]
+
+key = 5
+result = insert_linear_probing(table,key)
+
+key = 9
+result = insert_linear_probing(table,key)
 
 # -------------------------
 # Q4 — Quadratic Probing
@@ -127,15 +152,27 @@ def insert_quadratic_probing(table: list[int | None], key: int) -> list[int | No
 
       output = [None, 7, None, 11]
     """
-   
+    # TODO
     size = len(table)
-    start_index = key % size
-    
-    for i in range(size):
-        # Quadratic move: (start + i^2) % size
-        index = (start_index + i**2) % size
-        if table[index] is None:
-            table[index] = key
-            return table
-    return table # No slot found within 'size' probes
-    
+    index = key % size
+
+    if table[index] == None:
+        table[index] = key
+
+    else:
+        for i in range(len(table)):
+            next_index = (index + i*i) % len(table)
+            if table[next_index] == None:
+                table[next_index] = key 
+                break
+
+    return table    
+
+
+table = [None, 7, None, None]
+key = 11
+
+result = insert_quadratic_probing(table,key)
+
+key = 15
+result = insert_quadratic_probing(table,key)

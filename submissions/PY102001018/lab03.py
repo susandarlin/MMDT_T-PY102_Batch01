@@ -29,13 +29,19 @@ def char_frequency(s: str) -> dict[str, int]:
       s = "banana"
       output = {'b': 1, 'a': 3, 'n': 2}
     """
-   
-    freq = {}
+    output_dict = {}
     for char in s:
-        # If char is in dict, increment; otherwise, initialize to 1
-        freq[char] = freq.get(char, 0) + 1
-    return freq
+        if char in output_dict:
+            output_dict[char] += 1
+
+        else:
+            output_dict[char] = 1
+
+    return output_dict
+        
+
     
+
 
 # -------------------------
 # Q2 — Chaining (Collision Handling)
@@ -58,12 +64,12 @@ def insert_chaining(table: list[list[int]], key: int, size: int) -> list[list[in
       index = 5 % 3 = 2
       output = [[], [], [5]]
     """
-    
     index = key % size
-    # Append the key to the list (bucket) at the calculated index
+
     table[index].append(key)
+
     return table
-    
+
 # -------------------------
 # Q3 — Linear Probing
 # -------------------------
@@ -87,19 +93,17 @@ def insert_linear_probing(table: list[int | None], key: int) -> list[int | None]
 
       output = [8, 4, None, None]
     """
-
-    def insert_linear_probing(table: list[int | None], key: int) -> list[int | None]:
     size = len(table)
-    start_index = key % size
-    
-    for i in range(size):
-        # Linear move: (start + i) % size
-        index = (start_index + i) % size
-        if table[index] is None:
-            table[index] = key
-            return table
-    return table # Table is full
-    
+    index = key % size
+
+    while table[index] is not None:
+        index = (index +1) % size
+
+
+    table[index] = key
+
+    return table
+
 
 
 # -------------------------
@@ -127,15 +131,16 @@ def insert_quadratic_probing(table: list[int | None], key: int) -> list[int | No
 
       output = [None, 7, None, 11]
     """
-   
     size = len(table)
-    start_index = key % size
-    
-    for i in range(size):
-        # Quadratic move: (start + i^2) % size
-        index = (start_index + i**2) % size
-        if table[index] is None:
-            table[index] = key
-            return table
-    return table # No slot found within 'size' probes
-    
+    qua_hash = key % size
+
+    i = 0
+    index = qua_hash
+
+    while table[index] is not None:
+        i += 1
+        index = (qua_hash + i * i) % size
+
+    table[index] = key
+
+    return table
