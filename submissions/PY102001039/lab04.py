@@ -52,19 +52,19 @@ def build_submission_tree(base_path: str, folder1: str, folder2: str) -> TreeNod
     root.left = folder1
     root.right = folder2
 
-    folder1.left = TreeNode(".gitkeep")
-    folder1.right = TreeNode("autograder_results.json")
-    folder1.left.left = TreeNode("lab00.py")
-    folder1.left.right = TreeNode("lab01.py")
-    folder1.right.left = TreeNode("lab02.py")
-    folder1.right.right = TreeNode("lab03.py")
+    # folder1.left = TreeNode(".gitkeep")
+    # folder1.right = TreeNode("autograder_results.json")
+    folder1.left = TreeNode("lab00.py")
+    folder1.right = TreeNode("lab01.py")
+    # folder1.right.left = TreeNode("lab02.py")
+    # folder1.right.right = TreeNode("lab03.py")
 
-    folder2.left = TreeNode(".gitkeep")
-    folder2.right = TreeNode("autograder_results.json")
-    folder2.left.left = TreeNode("lab00.py")
-    folder2.left.right = TreeNode("lab01.py")
-    folder2.right.left = TreeNode("lab02.py")
-    folder2.right.right = TreeNode("lab03.py")
+    # folder2.left = TreeNode(".gitkeep")
+    # folder2.right = TreeNode("autograder_results.json")
+    folder2.left = TreeNode("lab00.py")
+    folder2.right = TreeNode("lab01.py")
+    # folder2.right.left = TreeNode("lab02.py")
+    # folder2.right.right = TreeNode("lab03.py")
 
     return root
 
@@ -122,6 +122,7 @@ def find_py_files(root: TreeNode) -> list[str]:
             lst.append(f"{parent}/{i}")
     return sorted(lst)
 
+# -------------------------
 # base_path = "submissions"
 # folder1 = "PY102001039"
 # folder2 = "PY102001004"
